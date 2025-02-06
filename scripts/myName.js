@@ -1,18 +1,39 @@
 // api documentation: https://whois.fdnd.nl/docs/
 
-// 1 persoon: https://fdnd.directus.app/items/person/67
+// 1 persoon: https://fdnd.directus.app/items/person/225
 // iedereen: https://fdnd.directus.app/items/person/?fields=id,name,github_handle,avatar&filter={%22squads%22:{%22squad_id%22:{%22name%22:%22Minor%20Web%20Dev%22}}}&sort=name
 
 const baseURL = 'https://fdnd.directus.app/';
-const endpointMe = 'items/person/67';
+const endpointMe = 'items/person/225';
 
+// De basis url + de specefieke persoon
+const myURL = baseURL + endpointMe;  
 
+// console.log("myurl: ", myURL);
 
+// Pak de data uit de variable myURL
+getData(myURL).then(dataTymo => {
+// console.log("data: ", dataTymo.data);
 
+// Pak het h1 element uit de dom
+let deH1 = document.querySelector("h1");
 
+// Pak het span element uit de dom
+let deDatum = document.querySelector("span");
 
+// Variable zetten met de naam uit data
+let myName = dataTymo.data.name;
 
+// Variable zetten met de geboortedatum uit data
+let myDate = dataTymo.data.birthdate;
 
+// Verander de tekst in het h1 element
+deH1.textContent = myName;
+
+// Verander de tekst in het span element
+deDatum.textContent = myDate;
+
+});
 
 
 
